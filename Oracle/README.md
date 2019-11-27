@@ -5,6 +5,10 @@ This folder contains the SQL scripts for Oracle.
 How to excute:
 
 1. Create an empty schema on your Oracle Server.
+For example,
+```SQL
+create tablespace cGDM datafile [path/file name] ;
+```
 
 2. Execute the ddl script to create the tables and fields.
 
