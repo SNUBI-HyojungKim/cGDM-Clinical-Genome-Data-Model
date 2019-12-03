@@ -3,7 +3,7 @@
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 26-Nov-2019
+# Last revised: 03-DEC-2019
 # Database: MySQL, tested Model: MySQL 5.6
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
@@ -25,43 +25,40 @@ DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) 
 	- demo database 
 ******************************************************************************************/
 
--- Table CLINICAL IDENTIFIER
+-- Table CLINICAL_IDENTIFIER
 
 CREATE TABLE `CLINICAL_IDENTIFIER`
 (
-  `Subject_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
+  `Subject_Identifier` Int(11) NOT NULL PRIMARY KEY ,
   `Patient_Number` Varchar(20) NOT NULL,
   `Institution_Identifier` Char(20) NOT NULL,
   `Order_Identifier` Char(20) NOT NULL,
   `Clinician_Identifier` Char(20) NOT NULL,
-  `Submission_Date` Datetime NOT NULL,
-  PRIMARY KEY (`Subject_Identifier`)
+  `Submission_Date` Datetime NOT NULL
 )
 ;
 
--- Table EXPERIMENT RELATED INFORMATION
+-- Table EXPERIMENT_RELATED_INFORMATION
 
 CREATE TABLE `EXPERIMENT_RELATED_INFORMATION`
 (
-  `Experiment_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
+  `Experiment_Identifier` Int(11) NOT NULL PRIMARY KEY ,
   `Subject_Identifier` Int(11) NOT NULL,
-  `Order_Identifier` Varchar(20) NOT NULL,
   `Test_Description` Text,
   `Sequencing_Type` Varchar(50) NOT NULL,
   `Platform_Technology` Varchar(20) NOT NULL,
   `Sequencer` Varchar(50) NOT NULL,
   `Sequencing_Institution` Varchar(50) NOT NULL,
   `Experimenter` Varchar(50) NOT NULL,
-  `Collection_Date` Datetime NOT NULL,
-  PRIMARY KEY (`Experiment_Identifier`)
+  `Collection_Date` Datetime NOT NULL
 )
 ;
 
--- Table BIOINFORMATICS PROTOCOL RELATED INFORMATION
+-- Table BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION
 
-CREATE TABLE `BIOINFORMATICS PROTOCOL RELATED INFORMATION`
+CREATE TABLE `BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION`
 (
-  `BI_Protocol_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
+  `BI_Protocol_Identifier` Int(11) NOT NULL PRIMARY KEY ,
   `Experiment_Identifier` Int(11) NOT NULL,
   `Pipeline_Name` Varchar(50) NOT NULL,
   `Step` Int(3) NOT NULL,
@@ -73,16 +70,15 @@ CREATE TABLE `BIOINFORMATICS PROTOCOL RELATED INFORMATION`
   `Analytics_Institution` Varchar(50) NOT NULL,
   `Bioinformatician` Varchar(50) NOT NULL,
   `Received_Date` Datetime NOT NULL,
-  `Documentation_Date` Datetime NOT NULL,
-  PRIMARY KEY (`BI_Protocol_Identifier`)
+  `Documentation_Date` Datetime NOT NULL
 )
 ;
 
--- Table QUALITY CHECK
+-- Table QUALITY_CHECK
 
-CREATE TABLE `QUALITY CHECK`
+CREATE TABLE `QUALITY_CHECK`
 (
-  `QC_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
+  `QC_Identifier` Int(11) NOT NULL PRIMARY KEY ,
   `BI_Protocol_Identifier` Int(11) NOT NULL,
   `Total_Reads` Bigint NOT NULL,
   `Total_Aligned_Reads` Bigint,
@@ -91,16 +87,15 @@ CREATE TABLE `QUALITY CHECK`
   `Mapped_Bases` Bigint,
   `Depth_Mean` Float,
   `Depth_SD` Float,
-  `Target_Bases` Bigint,
-  PRIMARY KEY (`QC_Identifier`)
+  `Target_Bases` Bigint
 )
 ;
 
--- Table GENOMIC ALTERATION
+-- Table GENOMIC_ALTERATION
 
-CREATE TABLE `GENOMIC ALTERATION`
+CREATE TABLE `GENOMIC_ALTERATION`
 (
-  `Genomic_Alteration_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
+  `Genomic_Alteration_Identifier` Int(11) NOT NULL PRIMARY KEY ,
   `BI_Protocol_Identifier` Int(11) NOT NULL,
   `Position` Varchar(255) NOT NULL,
   `Reference_Allele` Varchar(255) NOT NULL,
@@ -125,14 +120,13 @@ CREATE TABLE `GENOMIC ALTERATION`
   `COSMIC_ID` Varchar(10),
   `Molecular_Effect` Varchar(20),
   `Variant_Type` Varchar(20) NOT NULL,
-  `Functional_Domain` Varchar(50),
-  PRIMARY KEY (`Genomic_Alteration_Identifier`)
+  `Functional_Domain` Varchar(50)
 )
 ;
 
--- Table CLINICAL ANNOTATION
+-- Table CLINICAL_ANNOTATION
 
-CREATE TABLE `CLINICAL ANNOTATION`
+CREATE TABLE `CLINICAL_ANNOTATION`
 (
   `Clinical_Annotation_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
   `Genomic_Alteration_Identifier` Int(11) NOT NULL,
@@ -142,9 +136,9 @@ CREATE TABLE `CLINICAL ANNOTATION`
 )
 ;
 
--- Table MICROSATELLITE INSTABILITY
+-- Table MICROSATELLITE_INSTABILITY
 
-CREATE TABLE `MICROSATELLITE INSTABILITY`
+CREATE TABLE `MICROSATELLITE_INSTABILITY`
 (
   `MSI_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
   `BI_Protocol_Identifier` Int(11) NOT NULL,
@@ -156,11 +150,11 @@ CREATE TABLE `MICROSATELLITE INSTABILITY`
 )
 ;
 
--- Table TUMOR MUTATION BURDEN
+-- Table TUMOR_MUTATION_BURDEN
 
-CREATE TABLE `TUMOR MUTATION BURDEN`
+CREATE TABLE `TUMOR_MUTATION_BURDEN`
 (
-  `TMB_Identifier` Int(11) NOT NULL AUTO_INCREMENT,
+  `TMB_Identifier` Int(11) NOT NULL ,
   `BI_Protocol_Identifier` Int(11) NOT NULL,
   `Biomarker_Name` Varchar(50) NOT NULL,
   `Burden_Call` Varchar(20) NOT NULL,
