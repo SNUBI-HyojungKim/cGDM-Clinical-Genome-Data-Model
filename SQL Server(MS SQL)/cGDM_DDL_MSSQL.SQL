@@ -1,9 +1,10 @@
-﻿
+
+
 /*******************************************************************************************
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 26-Nov-2019
+# Last revised: 03-DEC-2019
 # Database: SQL Server, tested Model: SQL Server 2017
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
@@ -25,31 +26,30 @@ DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) 
 	- demo database 
 ******************************************************************************************/
 
--- Table CLINICAL IDENTIFIER
+/******************** Table CLINICAL_IDENTIFIER ********************/
 
-CREATE TABLE [CLINICAL IDENTIFIER]
+CREATE TABLE [CLINICAL_IDENTIFIER]
 (
- [Subject Identifier] Int IDENTITY NOT NULL,
+ [Subject_Identifier] Int IDENTITY NOT NULL,
  [Patient Number] Varchar(20) NOT NULL,
- [Institution Identifier] Char(20) NOT NULL,
+ [Institution_Identifier] Char(20) NOT NULL,
  [Order_Identifier] Char(20) NOT NULL,
  [Clinician_Identifier] Char(20) NOT NULL,
  [Submission_Date] Datetime2 NOT NULL
 )
 go
 
--- Add keys for table CLINICAL IDENTIFIER
+-- Add keys for table CLINICAL_IDENTIFIER
 
-ALTER TABLE [CLINICAL IDENTIFIER] ADD CONSTRAINT [PK_CLINICAL IDENTIFIER] PRIMARY KEY ([Subject Identifier])
+ALTER TABLE [CLINICAL_IDENTIFIER] ADD CONSTRAINT [PK_CLINICAL IDENTIFIER] PRIMARY KEY ([Subject_Identifier])
 go
 
--- Table EXPERIMENT RELATED INFORMATION
+/******************** Table EXPERIMENT_RELATED_INFORMATION ********************/
 
-CREATE TABLE [EXPERIMENT RELATED INFORMATION]
+CREATE TABLE [EXPERIMENT_RELATED_INFORMATION]
 (
  [Experiment_Identifier] Int IDENTITY NOT NULL,
  [Subject_Identifier] Int NOT NULL,
- [Order_Identifier] Varchar(20) NOT NULL,
  [Test_Description] Text NULL,
  [Sequencing_Type] Varchar(50) NOT NULL,
  [Platform_Technology] Varchar(20) NOT NULL,
@@ -60,14 +60,14 @@ CREATE TABLE [EXPERIMENT RELATED INFORMATION]
 )
 go
 
--- Add keys for table EXPERIMENT RELATED INFORMATION
+-- Add keys for table EXPERIMENT_RELATED_INFORMATION
 
-ALTER TABLE [EXPERIMENT RELATED INFORMATION] ADD CONSTRAINT [PK_EXPERIMENT RELATED INFORMATION] PRIMARY KEY ([Experiment_Identifier])
+ALTER TABLE [EXPERIMENT_RELATED_INFORMATION] ADD CONSTRAINT [PK_EXPERIMENT_RELATED_INFORMATION] PRIMARY KEY ([Experiment_Identifier])
 go
 
--- Table BIOINFORMATICS PROTOCOL RELATED INFORMATION
+/******************** Table BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION ********************/
 
-CREATE TABLE [BIOINFORMATICS PROTOCOL RELATED INFORMATION]
+CREATE TABLE [BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION]
 (
  [BI_Protocol_Identifier] Int IDENTITY NOT NULL,
  [Experiment_Identifier] Int NOT NULL,
@@ -87,10 +87,10 @@ go
 
 -- Add keys for table BIOINFORMATICS PROTOCOL RELATED INFORMATION
 
-ALTER TABLE [BIOINFORMATICS PROTOCOL RELATED INFORMATION] ADD CONSTRAINT [PK_BIOINFORMATICS PROTOCOL RELATED INFORMATION] PRIMARY KEY ([BI_Protocol_Identifier])
+ALTER TABLE [BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION] ADD CONSTRAINT [PK_BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION] PRIMARY KEY ([BI_Protocol_Identifier])
 go
 
--- Table QUALITY CHECK
+/******************** Table QUALITY CHECK ********************/
 
 CREATE TABLE [QUALITY CHECK]
 (
@@ -112,9 +112,9 @@ go
 ALTER TABLE [QUALITY CHECK] ADD CONSTRAINT [PK_QUALITY CHECK] PRIMARY KEY ([QC_Identifier])
 go
 
--- Table GENOMIC ALTERATION
+/******************** Table GENOMIC_ALTERATION ********************/
 
-CREATE TABLE [GENOMIC ALTERATION]
+CREATE TABLE [GENOMIC_ALTERATION]
 (
  [Genomic_Alteration_Identifier] Int IDENTITY NOT NULL,
  [BI_Protocol_Identifier] Int NOT NULL,
@@ -145,14 +145,14 @@ CREATE TABLE [GENOMIC ALTERATION]
 )
 go
 
--- Add keys for table GENOMIC ALTERATION
+-- Add keys for table GENOMIC_ALTERATION
 
-ALTER TABLE [GENOMIC ALTERATION] ADD CONSTRAINT [PK_GENOMIC ALTERATION] PRIMARY KEY ([Genomic_Alteration_Identifier])
+ALTER TABLE [GENOMIC_ALTERATION] ADD CONSTRAINT [PK_GENOMIC_ALTERATION] PRIMARY KEY ([Genomic_Alteration_Identifier])
 go
 
--- Table CLINICAL ANNOTATION
+/******************** Table CLINICAL_ANNOTATION ********************/
 
-CREATE TABLE [CLINICAL ANNOTATION]
+CREATE TABLE [CLINICAL_ANNOTATION]
 (
  [Clinical_Annotation_Identifier] Int IDENTITY NOT NULL,
  [Genomic_Alteration_Identifier] Int NOT NULL,
@@ -163,12 +163,12 @@ go
 
 -- Add keys for table CLINICAL ANNOTATION
 
-ALTER TABLE [CLINICAL ANNOTATION] ADD CONSTRAINT [PK_CLINICAL ANNOTATION] PRIMARY KEY ([Clinical_Annotation_Identifier])
+ALTER TABLE [CLINICAL_ANNOTATION] ADD CONSTRAINT [PK_CLINICAL_ANNOTATION] PRIMARY KEY ([Clinical_Annotation_Identifier])
 go
 
--- Table MICROSATELLITE INSTABILITY
+/******************** Table MICROSATELLITE_INSTABILITY ********************/
 
-CREATE TABLE [MICROSATELLITE INSTABILITY]
+CREATE TABLE [MICROSATELLITE_INSTABILITY]
 (
  [MSI_Identifier] Int IDENTITY NOT NULL,
  [BI_Protocol_Identifier] Int NOT NULL,
@@ -179,14 +179,14 @@ CREATE TABLE [MICROSATELLITE INSTABILITY]
 )
 go
 
--- Add keys for table MICROSATELLITE INSTABILITY
+-- Add keys for table MICROSATELLITE_INSTABILITY
 
-ALTER TABLE [MICROSATELLITE INSTABILITY] ADD CONSTRAINT [PK_MICROSATELLITE INSTABILITY] PRIMARY KEY ([MSI_Identifier])
+ALTER TABLE [MICROSATELLITE_INSTABILITY] ADD CONSTRAINT [PK_MICROSATELLITE_INSTABILITY] PRIMARY KEY ([MSI_Identifier])
 go
 
--- Table TUMOR MUTATION BURDEN
+/******************** Table TUMOR_MUTATION_BURDEN ********************/
 
-CREATE TABLE [TUMOR MUTATION BURDEN]
+CREATE TABLE [TUMOR_MUTATION_BURDEN]
 (
  [TMB_Identifier] Int IDENTITY NOT NULL,
  [BI_Protocol_Identifier] Int NOT NULL,
@@ -197,11 +197,7 @@ CREATE TABLE [TUMOR MUTATION BURDEN]
 )
 go
 
--- Add keys for table TUMOR MUTATION BURDEN
+-- Add keys for table TUMOR_MUTATION_BURDEN
 
-ALTER TABLE [TUMOR MUTATION BURDEN] ADD CONSTRAINT [PK_TUMOR MUTATION BURDEN] PRIMARY KEY ([TMB_Identifier])
+ALTER TABLE [TUMOR_MUTATION_BURDEN] ADD CONSTRAINT [PK_TUMOR_MUTATION_BURDEN] PRIMARY KEY ([TMB_Identifier])
 go
-
-
-
-
