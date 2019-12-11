@@ -3,7 +3,7 @@
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 03-DEC-2019
+# Last revised: 11-DEC-2019
 # Database: PostgreSQL, tested Model: PostgreSQL 9.5.10
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
@@ -114,7 +114,7 @@ CREATE TABLE GENOMIC_ALTERATION
   Alternative_Allele Varchar(255) NOT NULL,
   Chromosome Varchar(2) NOT NULL,
   Cytogenetic_Location Text,
-  Codon Text NOT NULL,
+  Codon Text,
   Exon Varchar(10),
   HGVS_Genomic_Change Text NOT NULL,
   HGVS_Coding_Change Text,
@@ -168,22 +168,3 @@ CREATE TABLE MICROSATELLITE_INSTABILITY
   )
 )
 ;
-
--- Table TUMOR_MUTATION_BURDEN
-
-CREATE TABLE TUMOR_MUTATION_BURDEN
-(
-  TMB_Identifier Integer NOT NULL PRIMARY KEY,
-  BI_Protocol_Identifier Integer NOT NULL,
-  Biomarker_Name Varchar(50) NOT NULL,
-  Burden_Call Varchar(20) NOT NULL,
-  Burden_Score Float NOT NULL,
-  Burden_Unit Varchar(20) NOT NULL,
-  CONSTRAINT PK_TUMOR_MUTATION_BURDEN PRIMARY KEY (
-  TMB_Identifier
-  )
-)
-;
-
-
-
