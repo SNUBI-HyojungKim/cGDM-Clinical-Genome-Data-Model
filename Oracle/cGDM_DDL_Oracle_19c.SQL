@@ -3,7 +3,7 @@
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 03-DEC-2019
+# Last revised: 11-DEC-2019
 # Database: Oracle, tested Model: Oracle 19c
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
@@ -64,12 +64,6 @@ CREATE SEQUENCE "Seq_CLINICAL_ANNOTATION_Clinical_Annotation_Identifier"
 /
 
 CREATE SEQUENCE "Seq_MICROSATELLITE_INSTABILITY_MSI_Identifier"
- NOMAXVALUE
- NOMINVALUE
- CACHE 20
-/
-
-CREATE SEQUENCE "Seq_TUMOR_MUTATION BURDEN_TMB_Identifier"
  NOMAXVALUE
  NOMINVALUE
  CACHE 20
@@ -184,7 +178,7 @@ CREATE TABLE "GENOMIC_ALTERATION"(
   "Alternative_Allele" Varchar2(255 ) NOT NULL,
   "Chromosome" Varchar2(2 ) NOT NULL,
   "Cytogenetic_Location" Clob,
-  "Codon" Clob NOT NULL,
+  "Codon" Clob,
   "Exon" Varchar2(10 ),
   "HGVS_Genomic_Change" Clob NOT NULL,
   "HGVS_Coding_Change" Clob,
@@ -248,29 +242,4 @@ CREATE TABLE "MICROSATELLITE_INSTABILITY"(
 
 ALTER TABLE "MICROSATELLITE_INSTABILITY" ADD CONSTRAINT "PK_MICROSATELLITE_INSTABILITY" PRIMARY KEY ("MSI_Identifier")
 /
-
--- Table TUMOR_MUTATION_BURDEN
-
-CREATE TABLE "TUMOR_MUTATION_BURDEN"(
-  "TMB_Identifier" Integer GENERATED ALWAYS AS IDENTITY(
-    NOMAXVALUE
-    NOMINVALUE
-    CACHE 20) NOT NULL,
-  "BI_Protocol_Identifier" Integer NOT NULL,
-  "Biomarker_Name" Varchar2(50 ) NOT NULL,
-  "Burden_Call" Varchar2(20 ) NOT NULL,
-  "Burden_Score" Real NOT NULL,
-  "Burden_Unit" Varchar2(20 ) NOT NULL
-)
-/
-
--- Add keys for table TUMOR_MUTATION_BURDEN
-
-ALTER TABLE "TUMOR_MUTATION_BURDEN" ADD CONSTRAINT "PK_TUMOR_MUTATION_BURDEN" PRIMARY KEY ("TMB_Identifier")
-/
-
-
-
-
-
 
