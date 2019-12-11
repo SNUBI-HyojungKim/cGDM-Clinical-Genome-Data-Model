@@ -1,10 +1,9 @@
 
-
 /*******************************************************************************************
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 03-DEC-2019
+# Last revised: 11-DEC-2019
 # Database: SQL Server, tested Model: SQL Server 2017
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
@@ -31,7 +30,7 @@ DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) 
 CREATE TABLE [CLINICAL_IDENTIFIER]
 (
  [Subject_Identifier] Int IDENTITY NOT NULL,
- [Patient Number] Varchar(20) NOT NULL,
+ [Patient_Number] Varchar(20) NOT NULL,
  [Institution_Identifier] Char(20) NOT NULL,
  [Order_Identifier] Char(20) NOT NULL,
  [Clinician_Identifier] Char(20) NOT NULL,
@@ -90,9 +89,9 @@ go
 ALTER TABLE [BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION] ADD CONSTRAINT [PK_BIOINFORMATICS_PROTOCOL_RELATED_INFORMATION] PRIMARY KEY ([BI_Protocol_Identifier])
 go
 
-/******************** Table QUALITY_CHECK ********************/
+/******************** Table QUALITY CHECK ********************/
 
-CREATE TABLE [QUALITY_CHECK]
+CREATE TABLE [QUALITY CHECK]
 (
  [QC_Identifier] Int IDENTITY NOT NULL,
  [BI_Protocol_Identifier] Int NOT NULL,
@@ -109,7 +108,7 @@ go
 
 -- Add keys for table QUALITY CHECK
 
-ALTER TABLE [QUALITY CHECK] ADD CONSTRAINT [PK_QUALITY_CHECK] PRIMARY KEY ([QC_Identifier])
+ALTER TABLE [QUALITY CHECK] ADD CONSTRAINT [PK_QUALITY CHECK] PRIMARY KEY ([QC_Identifier])
 go
 
 /******************** Table GENOMIC_ALTERATION ********************/
@@ -123,7 +122,7 @@ CREATE TABLE [GENOMIC_ALTERATION]
  [Alternative_Allele] Varchar(255) NOT NULL,
  [Chromosome] Varchar(2) NOT NULL,
  [Cytogenetic_Location] Text NULL,
- [Codon] Text NOT NULL,
+ [Codon] Text NULL,
  [Exon] Varchar(10) NULL,
  [HGVS_Genomic_Change] Text NOT NULL,
  [HGVS_Coding_Change] Text NULL,
@@ -182,22 +181,4 @@ go
 -- Add keys for table MICROSATELLITE_INSTABILITY
 
 ALTER TABLE [MICROSATELLITE_INSTABILITY] ADD CONSTRAINT [PK_MICROSATELLITE_INSTABILITY] PRIMARY KEY ([MSI_Identifier])
-go
-
-/******************** Table TUMOR_MUTATION_BURDEN ********************/
-
-CREATE TABLE [TUMOR_MUTATION_BURDEN]
-(
- [TMB_Identifier] Int IDENTITY NOT NULL,
- [BI_Protocol_Identifier] Int NOT NULL,
- [Biomarker_Name] Varchar(50) NOT NULL,
- [Burden_Call] Varchar(20) NOT NULL,
- [Burden_Score] Real NOT NULL,
- [Burden_Unit] Varchar(20) NOT NULL
-)
-go
-
--- Add keys for table TUMOR_MUTATION_BURDEN
-
-ALTER TABLE [TUMOR_MUTATION_BURDEN] ADD CONSTRAINT [PK_TUMOR_MUTATION_BURDEN] PRIMARY KEY ([TMB_Identifier])
 go
