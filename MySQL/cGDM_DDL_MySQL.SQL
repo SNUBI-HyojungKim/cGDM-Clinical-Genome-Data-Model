@@ -112,13 +112,13 @@ CREATE TABLE `GENOMIC_ALTERATION`
   `dbVar_ID` Varchar(20),
   `Genome_Build` Varchar(20),
   `Genomic_Source` Varchar(10) NOT NULL,
-  `HGNC_ID` Varchar(10),
+  `HGNC_Gene_Symbol` Varchar(20),
   `Entrez_ID` Int,
   `Ensembl_ID` Char(15),
   `Genotype` Char(3),
   `clinVar_Variant_ID` Varchar(20),
   `COSMIC_ID` Varchar(10),
-  `Molecular_Effect` Varchar(20),
+  `Molecular_Effect` Varchar(50),
   `Variant_Type` Varchar(20) NOT NULL,
   `Functional_Domain` Varchar(50)
 )
