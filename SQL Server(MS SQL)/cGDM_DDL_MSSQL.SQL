@@ -3,7 +3,7 @@
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 11-DEC-2019
+# Last revised: 16-DEC-2019
 # Database: SQL Server, tested Model: SQL Server 2017
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
@@ -132,13 +132,13 @@ CREATE TABLE [GENOMIC_ALTERATION]
  [dbVar_ID] Varchar(20) NULL,
  [Genome_Build] Varchar(20) NULL,
  [Genomic_Source] Varchar(10) NOT NULL,
- [HGNC_ID] Varchar(10) NULL,
+ [HGNC_Gene_Symbol] Varchar(20) NULL,
  [Entrez_ID] Int NULL,
  [Ensembl_ID] Char(15) NULL,
  [Genotype] Char(3) NULL,
  [clinVar_Variant_ID] Varchar(20) NULL,
  [COSMIC_ID] Varchar(10) NULL,
- [Molecular_Effect] Varchar(20) NULL,
+ [Molecular_Effect] Varchar(50) NULL,
  [Variant_Type] Varchar(20) NOT NULL,
  [Functional_Domain] Varchar(50) NULL
 )
