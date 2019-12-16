@@ -25,7 +25,7 @@ The proposed cGDM could serve as a data-layer infrastructure supporting the inte
 Two public data were imported into a cGDM-based database. This demo database is provided as an SQL statement executed by MySQL.
 The provided two demo databases were created based on the following two public data:
 1. [TCGA Pancreatic Adenocarcinoma(PAAD)](https://portal.gdc.cancer.gov/projects/TCGA-PAAD)
-2. [1000 Genome Phase 3](https://www.internationalgenome.org/category/phase-3/)
+2. [1000 Genome Phase 3 (CEU)](https://www.internationalgenome.org/category/phase-3/)
 	- In 1KGP3, only the sample data corresponding to the population code "CEU" ("Utah Residents with Northern and Western European Ancestry") were used.
     - The volume of this data is so large that it cannot be shared with github but through our server. - see the [Demo_Database/1000 Genome Phase 3 dataset](http://cipher.snubi.org:8800/github/cGDM_1KGP3_test_Dump.sql)
     
