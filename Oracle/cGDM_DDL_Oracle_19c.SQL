@@ -3,7 +3,7 @@
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 11-DEC-2019
+# Last revised: 16-DEC-2019
 # Database: Oracle, tested Model: Oracle 19c
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
@@ -188,13 +188,13 @@ CREATE TABLE "GENOMIC_ALTERATION"(
   "dbVar_ID" Varchar2(20 ),
   "Genome_Build" Varchar2(20 ),
   "Genomic_Source" Varchar2(10 ) NOT NULL,
-  "HGNC_ID" Varchar2(10 ),
+  "HGNC_Gene_Symbol" Varchar2(20 ),
   "Entrez_ID" Integer,
   "Ensembl_ID" Char(15 ),
   "Genotype" Char(3 ),
   "clinVar_Variant_ID" Varchar2(20 ),
   "COSMIC_ID" Varchar2(10 ),
-  "Molecular_Effect" Varchar2(20 ),
+  "Molecular_Effect" Varchar2(50 ),
   "Variant_Type" Varchar2(20 ) NOT NULL,
   "Functional_Domain" Varchar2(50 )
 )
