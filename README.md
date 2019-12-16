@@ -12,7 +12,7 @@ The proposed cGDM could serve as a data-layer infrastructure supporting the inte
 	- [SQL server(MSSQL)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/MSSQL)
     
     
-- [Demo Database (with DDL for MySQL)](Demo Database)
+- [Demo Database (with DDL for MySQL)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model#Demo Database)
 	- [TCGA Pancreatic Adenocarcinoma(PAAD)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
     - [1000 Genome Phase 3(CEU)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
 
