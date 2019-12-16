@@ -36,3 +36,5 @@ The proposed cGDM could serve as a data-layer infrastructure supporting the inte
 
 This project is licensed under the Seoul National University Biomedical Informatics (SNUBI), Division of Biomedical Informatics, Seoul National University College of Medicine, Seoul, Republic of Korea - see the [LICENSE.md](LICENSE.md) file for details
 
+## Publications
+Not yet..
