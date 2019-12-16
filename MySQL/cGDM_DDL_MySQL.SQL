@@ -3,7 +3,7 @@
 DDL(Data definition language) script to create cGDM(Clinical Genome Data Model) version 1.0
 ********************************************************************************************
 # Created: 26-Nov-2019
-# Last revised: 11-DEC-2019
+# Last revised: 16-DEC-2019
 # Database: MySQL, tested Model: MySQL 5.6
 # 
 # Authors:  Hyo Jung Kim, Hyeong Joon Kim
