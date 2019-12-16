@@ -12,7 +12,7 @@ The proposed cGDM could serve as a data-layer infrastructure supporting the inte
 	- [SQL server(MSSQL)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/MSSQL)
     
     
-- [Demo Database (with DDL for MySQL)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model#Demo Database)
+- [Demo Database (with DDL for MySQL)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model#Demo_Database)
 	- [TCGA Pancreatic Adenocarcinoma(PAAD)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
     - [1000 Genome Phase 3(CEU)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
 
@@ -21,7 +21,7 @@ The proposed cGDM could serve as a data-layer infrastructure supporting the inte
 	- [Figure S1. Entity-relationship diagram of the cGDM implemented in RDBMS](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Figure%20S1.%20Entity-relationship%20diagram%20of%20the%20cGDM%20implemented%20in%20RDBMS.pdf)
     - [Table S1. Table Specification of the CGDM](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Table%20S1.%20Table%20Specification%20of%20the%20CGDM.xlsx)
 
-## Demo Database
+## Demo_Database
 Two public data were imported into a cGDM-based database. This demo database is provided as an SQL statement executed by MySQL.
 The provided two demo databases were created based on the following two public data:
 1. [TCGA Pancreatic Adenocarcinoma(PAAD)](https://portal.gdc.cancer.gov/projects/TCGA-PAAD)
