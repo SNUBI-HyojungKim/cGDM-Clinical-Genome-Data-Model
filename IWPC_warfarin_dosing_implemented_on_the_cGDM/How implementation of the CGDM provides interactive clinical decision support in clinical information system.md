@@ -14,6 +14,7 @@ ADD INDEX `Idx_dbSNP_ref_alt_genotype` (`HGNC_ID` ASC, `dbSNP_ID` ASC, `Referenc
 ```
 
 Minimal requirements for the implementation of demo database and DMBS setup are
+
 : Storage size 
   - over 200 GB for 1000 genome project phase 3 CEU population 
   - 500MB for TCGA PAAD dataset
