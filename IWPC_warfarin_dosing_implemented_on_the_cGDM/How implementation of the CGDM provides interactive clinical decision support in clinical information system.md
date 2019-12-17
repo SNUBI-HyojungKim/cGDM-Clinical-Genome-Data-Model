@@ -17,8 +17,7 @@ Minimal requirements for the implementation of demo database and DMBS setup are
 : Storage size 
   - over 200 GB for 1000 genome project phase 3 CEU population 
   - 500MB for TCGA PAAD dataset
-  RAM 
-  - over 4GB 
+  - over 4GB RAM
   
  In our test enviromnet setting, provided query performance is under 0.05 sec.
  Test enviromnet :
