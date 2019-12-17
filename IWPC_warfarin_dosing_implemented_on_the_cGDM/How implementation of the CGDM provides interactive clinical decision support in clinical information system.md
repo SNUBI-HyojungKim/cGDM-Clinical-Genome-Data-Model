@@ -20,8 +20,9 @@ Minimal requirements for the implementation of demo database and DMBS setup are
   - over 4GB RAM
   
  In our test enviromnet setting, provided query performance is under 0.05 sec.
- Test enviromnet :
- Server CPU: NVIDIA tesla c1060 / Quad core
- RAM: 8GB
- Starage: SAS 600GB/2
- Dataset : 1000 Genome project phase 3 CEU popluation (99GB)
+
+: Test enviromnet
+ - Server CPU: NVIDIA tesla c1060 / Quad core
+ - RAM: 8GB
+ - Starage: SAS 600GB/2
+ - Dataset : 1000 Genome project phase 3 CEU popluation (99GB)
