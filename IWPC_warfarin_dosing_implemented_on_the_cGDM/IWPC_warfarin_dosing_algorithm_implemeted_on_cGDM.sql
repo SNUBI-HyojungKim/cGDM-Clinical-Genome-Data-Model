@@ -1,4 +1,4 @@
-USE `cGDM_1KGP3_Test`;
+USE `Your database name or demo database`;
 
 DROP PROCEDURE IF EXISTS `Get_Wafarin_Pharmacogenomic_Dosing_Result`;
 
