@@ -9,7 +9,8 @@ We recommend to create a index before you excute our computerized algorithm on y
 USE [your databasename];
 
 ALTER TABLE `cGDM_1KGP3_Test`.`GENOMIC_ALTERATION` 
-ADD INDEX `Idx_dbSNP_ref_alt_genotype` (`HGNC_ID` ASC, `dbSNP_ID` ASC, `Reference_Allele` ASC, `Alternative_Allele` ASC, `Genotype` ASC, `Position` ASC);
+ADD INDEX `Idx_dbSNP_ref_alt_genotype` (`HGNC_ID` ASC, `dbSNP_ID` ASC, `Reference_Allele` ASC, `Alternative_Allele` ASC
+                                        , `Genotype` ASC, `Position` ASC);
 ```
 
 Minimal requirements for the implementation of demo database and DMBS setup are
