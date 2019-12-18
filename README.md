@@ -30,7 +30,7 @@ The provided two demo databases were created based on the following two public d
     - The volume of this data is so large that it cannot be shared with github but through our server. - see the [Demo_Database/1000 Genome Phase 3 dataset](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
 
 ## Graphical map of the contents outline
-<img src = "https://user-images.githubusercontent.com/58065456/71054616-fb689400-2195-11ea-87b9-b0fd057c2fb3.jpg" width="90%"></img>
+<img src = "https://user-images.githubusercontent.com/58065456/71054616-fb689400-2195-11ea-87b9-b0fd057c2fb3.jpg" width="100%"></img>
 
 
 ## Authors
