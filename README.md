@@ -28,7 +28,10 @@ The provided two demo databases were created based on the following two public d
 2. [1000 Genome Phase 3 (CEU)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database) [- link](https://www.internationalgenome.org/category/phase-3/)
 	- In 1KGP3, only the sample data corresponding to the population code "CEU" ("Utah Residents with Northern and Western European Ancestry") were used.
     - The volume of this data is so large that it cannot be shared with github but through our server. - see the [Demo_Database/1000 Genome Phase 3 dataset](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
-    
+
+## Graphical map of the contents outline
+![Conceptual_map_of_the_contents](./C:/Users/arcane/Desktop/Conceptual_map_of_the_contents.jpg)
+
 
 ## Authors
 
