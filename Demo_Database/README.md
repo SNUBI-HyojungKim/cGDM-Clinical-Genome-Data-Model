@@ -7,7 +7,7 @@ Each script contains database creation with demo dataset.
 
 ## How to create Demo databases : 
 
-1. Download SQL file : http://cipher.snubi.org:8800/github/cGDM_1KGP3_Test.sql
+1. Download SQL file :
 - [1KGP3_CEU demo database](1KGP3_CEU) or URL http://cipher.snubi.org:8800/github/cGDM_1KGP3_Test.sql
 - [cGDM TCGA PAAD](cGDM_TCGA_PAAD_Demo_Database.sql)
 
