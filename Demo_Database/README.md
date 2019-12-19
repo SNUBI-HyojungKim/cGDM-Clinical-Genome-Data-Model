@@ -14,7 +14,22 @@ Each script contains database creation with demo dataset.
 CREATE Database cGDM;
 ```
 
-2. Excute SQL script :
+3. Excute SQL script :
 ```sh
 mysql -u[user] -p [cGDM] < cGDM_1KGP3_Test.sql
 ``` 
+
+
+## How to create [1KGP3_CEU demo database](1KGP3_CEU): 
+
+1. Download SQL file from [cGDM TCGA PAAD](cGDM_TCGA_PAAD_Demo_Database.sql)
+
+2. CREATE empty MySQL database :
+```sql
+CREATE Database cGDM;
+```
+
+3. Excute SQL script :
+```sh
+mysql -u[user] -p [cGDM] < cGDM_1KGP3_Test.sql
+```  
