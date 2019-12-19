@@ -8,8 +8,8 @@ Each script contains database creation with demo dataset.
 ## How to create Demo databases : 
 
 1. Download SQL file :
-- [1KGP3_CEU demo database](1KGP3_CEU) or URL http://cipher.snubi.org:8800/github/cGDM_1KGP3_Test.sql
-- [cGDM TCGA PAAD](cGDM_TCGA_PAAD_Demo_Database.sql)
+- [1KGP3_CEU demo database](1KGP3_CEU) or URL http://cipher.snubi.org:8800/github/cGDM_1KGP3_Test.sql (92.69GB)
+- [cGDM TCGA PAAD](cGDM_TCGA_PAAD_Demo_Database.sql) (9.41MB)
 
 2. CREATE empty MySQL database :
 ```sql
