@@ -21,7 +21,7 @@ Links to main article will be added here after publication: <>
 
 - [Licence](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model#License)
 - Supplementary Figure
-	- [Figure S1. Entity-relationship diagram of the cGDM implemented in RDBMS](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Figure%20S1.%20Entity-relationship%20diagram%20of%20the%20cGDM%20implemented%20in%20RDBMS.pdf)
+	- [Figure S1. Entity-relationship diagram of the cGDM implemented in RDBMS](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Figure%20S1.%20Entity-relationship%20diagram%20of%20the%20CGDM%20implemented%20in%20RDBMS.pdf)
     - [Table S1. Table Specification of the CGDM](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Table%20S1.%20Table%20Specification%20of%20the%20CGDM.xlsx)
 
 ## Demo_Database
@@ -47,5 +47,5 @@ The provided two demo databases were created based on the following two public d
 
 ## License
 
-This project is licensed under the Seoul National University Biomedical Informatics (SNUBI), Division of Biomedical Informatics, Seoul National University College of Medicine, Seoul, Republic of Korea - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Seoul National University Biomedical Informatics (SNUBI), Division of Biomedical Informatics, Seoul National University College of Medicine, Seoul, Republic of Korea - see the [LICENSE.md](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/README.md) file for details
 
