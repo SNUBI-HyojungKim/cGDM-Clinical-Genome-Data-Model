@@ -1,4 +1,4 @@
-USE `Your database name or demo database`;
+USE `cGDM_1KGP3_Test`;
 
 DROP PROCEDURE IF EXISTS `Get_Wafarin_Pharmacogenomic_Dosing_Result`;
 
@@ -12,7 +12,7 @@ BEGIN
 PGx CDS example script: seamless IWCP warfarin dose calulation along with the cGDM | version 1.0
 ****************************************************************************************************************
 # Created: 10-DEC-2019
-# Last revised: 16-DEC-2019
+# Last revised: 26-DEC-2019
 # Database: MySQL, tested Model: MySQL 5.6
 #
 # Logical reference: Consortium, I. W. P. Estimation of the warfarin dose with clinical and pharmacogenetic data. 
@@ -22,7 +22,10 @@ PGx CDS example script: seamless IWCP warfarin dose calulation along with the cG
 #
 # Execute example: 
 # CALL Get_Wafarin_Pharmacogenomic_Dosing_Result ( 22, 175, NULL, 'NA12400', 'U','N','N'); -- Invalid input 
-# CALL Get_Wafarin_Pharmacogenomic_Dosing_Result ( 22, 175, 70, 'NA12400', 'U','N','N'); -- Valid case 
+# CALL Get_Wafarin_Pharmacogenomic_Dosing_Result_2 ( 22, 175, 70, 'NA12400', 'U','N','N'); -- Valid case 
+# CALL Get_Wafarin_Pharmacogenomic_Dosing_Result_2 ( 22, 175, 70, 'NA06986', 'U','Y','N'); -- Valid case   
+# CALL Get_Wafarin_Pharmacogenomic_Dosing_Result_2 ( 39, 182, 77, 'NA07000', 'U','N','Y'); -- Valid case   
+# CALL Get_Wafarin_Pharmacogenomic_Dosing_Result_2 ( 44, 165, 60, 'NA12414', 'U','Y','Y'); -- Valid case   
 #
 # Copyright of the SQL script 2019 SNUBI (Seoul National University Biomedical Informatics Lab) 
 # Licensed under the GENERAL PUBLIC LICENSE, Version 3, 29 June 2007;
@@ -38,6 +41,8 @@ PGx CDS example script: seamless IWCP warfarin dose calulation along with the cG
 	- ERD(Entity relationship diagram)
 	- DDL script (for MySQL, MSSQL, Oracle, PostgreSQL)
 	- demo database 
+
+# 26-DEC-2019 : Add clinical dosing algorithm (if clause, when both VKORC1 and CYP2C9 genotypes are unknwon) 
 ******************************************************************************************/
 DECLARE RESULT VARCHAR(255);
 
@@ -84,47 +89,57 @@ FROM GENOMIC_ALTERATION GA WHERE HGNC_Gene_Symbol = 'CYP2C9' AND dbSNP_ID in ('r
 SET @VKORC1_Genotype = (SELECT IFNULL((SELECT CASE WHEN Genotype = '0|0' THEN 'G/G' ELSE CONCAT(Reference_Allele,'/',Alternative_Allele) END
 FROM Wafarin_Related_Variant_Data WHERE HGNC_Gene_Symbol = 'VKORC1'),'Unknown'));
 
-SELECT BI_Protocol_Identifier 
-, CONCAT(MAX(CASE WHEN LEFT(Genotype,1) = 1 THEN Star_allele ELSE '*1' END) 
-,'/', MAX(CASE WHEN RIGHT(Genotype,1) = 1 THEN Star_allele ELSE '*1' END) ) AS Star_Allele_Genotype
- FROM Wafarin_Related_Variant_Data WHERE HGNC_Gene_Symbol = 'CYP2C9'
-GROUP BY BI_Protocol_Identifier;
-
 ## @CYP2C9_Genotype identification query from cGDM
 SET @CYP2C9_Genotype =  (SELECT CONCAT(MAX(CASE WHEN LEFT(Genotype,1) = 1 THEN Star_allele ELSE '*1' END) 
 ,'/', MAX(CASE WHEN RIGHT(Genotype,1) = 1 THEN Star_allele ELSE '*1' END) ) 
 FROM Wafarin_Related_Variant_Data WHERE BI_Protocol_Identifier = @BI_Protocol_Identifier GROUP BY BI_Protocol_Identifier);
 
-DROP TABLE  IF EXISTS `IWPC_coefficient_given_genotype_table`;
-CREATE TABLE IWPC_coefficient_given_genotype_table
-(  HGNC_Gene_Symbol varchar(20) 
-, Final_Genotype varchar(20) -- could be reference/alternative allele, or star allele name in forms of diploid
-, coefficient real
-) engine = memory;
 
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','G/G',0);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','A/G',0.8677);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','A/A',1.6974);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','Unknown',0.4854);
+SET @VKORC1_Genotype = COALESCE(@VKORC1_Genotype,'Unknown');
+SET @CYP2C9_Genotype = COALESCE(@CYP2C9_Genotype,'Unknown');
 
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*1',0);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*2',0.5211);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*3',0.9357);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*2',1.0616);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*3',1.9206);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*3',2.3312);
-INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','Unknown',0.2188);
+## @VKORC1_Genotype & @CYP2C9_Genotype == unknown : clinical dosing calculating 
+IF @VKORC1_Genotype = 'Unknown' AND @CYP2C9_Genotype = 'Unknown'
+THEN 
+SET @Sqrt_Dose = (SELECT 4.0376 - 0.2546 * @Age_in_decades + 0.0118 * Height_in_cm + 0.0134 * Weight_in_kg
+	+ (SELECT IF(Race = 'A',-0.6752, IF(Race = 'B', 0.4060, IF(Race = 'M',0.0443, 0))))
+    + (SELECT IF(Taking_Enzyme_Inducer = 'Y', 1.2799,0))
+	- (SELECT IF(Taking_Amiodarone = 'Y',0.5695,0))) ;
+ELSE     
+		DROP TABLE  IF EXISTS `IWPC_coefficient_given_genotype_table`;
+		CREATE TABLE IWPC_coefficient_given_genotype_table
+		(  HGNC_Gene_Symbol varchar(20) 
+		, Final_Genotype varchar(20) -- could be reference/alternative allele, or star allele name in forms of diploid
+		, coefficient real
+		) engine = memory;
 
-## Pharmacogenetic dosing calculating
-SET @Sqrt_Dose = (SELECT 5.6044 - 0.2614 * @Age_in_decades + 0.0087 * Height_in_cm + 0.0128 * Weight_in_kg
-- (SELECT coefficient FROM IWPC_coefficient_given_genotype_table WHERE HGNC_Gene_Symbol = 'VKORC1' AND Final_Genotype = @VKORC1_Genotype) 
-- (SELECT coefficient FROM IWPC_coefficient_given_genotype_table WHERE HGNC_Gene_Symbol = 'CYP2C9' AND Final_Genotype = @CYP2C9_Genotype)
-- (SELECT IF(Race = 'A',0.1092, IF(Race = 'B', 0.2760, IF(Race = 'M',0.1032, 0))))
-+ (SELECT IF(Taking_Enzyme_Inducer = 'Y', 1.1816,0))
-- (SELECT IF(Taking_Amiodarone = 'Y',0.5503,0))) ;
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','G/G',0);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','A/G',0.8677);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','A/A',1.6974);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('VKORC1','Unknown',0.4854);
 
-DROP TABLE Wafarin_Related_Variant_Data;
-DROP TABLE IWPC_coefficient_given_genotype_table; 
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*1',0);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*2',0.5211);
+        	INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*1',0.5211);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*3',0.9357);
+        	INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*1',0.9357);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*2',1.0616);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*3',1.9206);
+        	INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*2',1.9206);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*3',2.3312);
+		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','Unknown',0.2188);
+
+		## Pharmacogenetic dosing calculating
+		SET @Sqrt_Dose = (SELECT 5.6044 - 0.2614 * @Age_in_decades + 0.0087 * Height_in_cm + 0.0128 * Weight_in_kg
+		- (SELECT coefficient FROM IWPC_coefficient_given_genotype_table WHERE HGNC_Gene_Symbol = 'VKORC1' AND Final_Genotype = @VKORC1_Genotype) 
+		- (SELECT coefficient FROM IWPC_coefficient_given_genotype_table WHERE HGNC_Gene_Symbol = 'CYP2C9' AND Final_Genotype = @CYP2C9_Genotype)
+		- (SELECT IF(Race = 'A',0.1092, IF(Race = 'B', 0.2760, IF(Race = 'M',0.1032, 0))))
+		+ (SELECT IF(Taking_Enzyme_Inducer = 'Y', 1.1816,0))
+		- (SELECT IF(Taking_Amiodarone = 'Y',0.5503,0))) ;
+
+		DROP TABLE Wafarin_Related_Variant_Data;
+		DROP TABLE IWPC_coefficient_given_genotype_table; 
+END IF;
 
 ########### Check Input Value Validity
 ## Variable check examples; you can make validity check statement both in the SQL level and front-end UI.
