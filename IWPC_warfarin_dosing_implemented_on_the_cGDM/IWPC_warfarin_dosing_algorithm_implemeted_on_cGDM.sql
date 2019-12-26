@@ -98,14 +98,14 @@ FROM Wafarin_Related_Variant_Data WHERE BI_Protocol_Identifier = @BI_Protocol_Id
 SET @VKORC1_Genotype = COALESCE(@VKORC1_Genotype,'Unknown');
 SET @CYP2C9_Genotype = COALESCE(@CYP2C9_Genotype,'Unknown');
 
-## @VKORC1_Genotype & @CYP2C9_Genotype == unknown : clinical dosing calculating 
+## @VKORC1_Genotype & @CYP2C9_Genotype == unknown : clinical dosing calculating, S1f
 IF @VKORC1_Genotype = 'Unknown' AND @CYP2C9_Genotype = 'Unknown'
 THEN 
 SET @Sqrt_Dose = (SELECT 4.0376 - 0.2546 * @Age_in_decades + 0.0118 * Height_in_cm + 0.0134 * Weight_in_kg
 	+ (SELECT IF(Race = 'A',-0.6752, IF(Race = 'B', 0.4060, IF(Race = 'M',0.0443, 0))))
     + (SELECT IF(Taking_Enzyme_Inducer = 'Y', 1.2799,0))
 	- (SELECT IF(Taking_Amiodarone = 'Y',0.5695,0))) ;
-ELSE     
+ELSE  ## Phrmacogenetic dosing algorithm S1e
 		DROP TABLE  IF EXISTS `IWPC_coefficient_given_genotype_table`;
 		CREATE TABLE IWPC_coefficient_given_genotype_table
 		(  HGNC_Gene_Symbol varchar(20) 
