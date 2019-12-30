@@ -122,12 +122,12 @@ ELSE
 
 		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*1',0);
 		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*2',0.5211);
-        INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*1',0.5211);
+        	INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*1',0.5211);
 		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*1/*3',0.9357);
-        INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*1',0.9357);
+        	INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*1',0.9357);
 		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*2',1.0616);
 		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*2/*3',1.9206);
-        INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*2',1.9206);
+        	INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*2',1.9206);
 		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','*3/*3',2.3312);
 		INSERT INTO IWPC_coefficient_given_genotype_table VALUES ('CYP2C9','Unknown',0.2188);
 
