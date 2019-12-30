@@ -20,7 +20,7 @@ PGx CDS example script: seamless IWCP warfarin dose calulation along with the cG
 # 
 # Authors:  Hyo Jung Kim
 #
-# Execute example: 
+# Execute example in 1KGP3 CEU demo DB: 
 # CALL Get_Wafarin_Pharmacogenomic_Dosing_Result ( 22, 175, NULL, 'NA12400', 'U','N','N'); -- Invalid input 
 # CALL Get_Wafarin_Pharmacogenomic_Dosing_Result ( 22, 175, 70, 'NA06986', 'U','N','N'); -- Valid case 
 # CALL Get_Wafarin_Pharmacogenomic_Dosing_Result ( 22, 175, 70, 'NA06989', 'U','N','N'); -- Valid case   
