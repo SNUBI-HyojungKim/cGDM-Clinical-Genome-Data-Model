@@ -22,7 +22,7 @@ Links to main article will be added here after publication: <>
 - [Licence](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model#License)
 - Supplementary Figure
 	- [Figure S1. Entity-relationship diagram of the cGDM implemented in RDBMS](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Figure%20S1.%20Entity-relationship%20diagram%20of%20the%20CGDM%20implemented%20in%20RDBMS.pdf)
-    - [Table S1. Table Specification of the CGDM](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Table%20S1.%20Table%20Specification%20of%20the%20CGDM.xlsx)
+    - [Table S1. Table Specification of the cGDM](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Table%20S1.%20Table%20Specification%20of%20the%20CGDM.xlsx)
 
 ## Demo_Database
 Two public data were imported into a cGDM-based database. This demo database is provided as an SQL statement executed by MySQL.
