@@ -3,7 +3,7 @@ interactive clinical decision support when it linked in clinical information sys
 
 You can run the source code(.sql file) via any demo dataset we provided, or your own dataset imported to the cGDM schema.
 
-We recommend to create a index before you excute our computerized algorithm on your machine.
+We recommend to create an index before you excute our computerized algorithm on your machine.
 
 ```sql
 USE [your databasename];
@@ -17,13 +17,13 @@ Minimal requirements for the implementation of demo database and DMBS setup are
 
 : Storage size 
   - over 200 GB for 1000 genome project phase 3 CEU population 
-  - 500MB for TCGA PAAD dataset
-  - over 4GB RAM
+  - 500 MB for TCGA PAAD dataset
+  - over 4 GB RAM
   
  In our test enviromnet setting, provided query performance is under 0.001 sec.
 
 : Test enviromnet
  - Server CPU: NVIDIA tesla c1060 / Quad core
- - RAM: 8GB
- - Starage: SAS 600GB/2
+ - RAM: 8 GB
+ - Starage: SAS 600 GB/2
  - Dataset : 1000 Genome project phase 3 CEU popluation (46 GB)
