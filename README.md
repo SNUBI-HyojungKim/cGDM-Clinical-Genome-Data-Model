@@ -4,7 +4,7 @@ The clinical Genome Data Model (cGDM) encompasses reliability-related factors th
 The proposed cGDM could serve as a data-layer infrastructure supporting the intellectual interplay between medical experts and informed decision-making. 
 
 To get more information, and to access the cGDM as logical data model, please check our publication.
-Links to main article will be added here after publication: <> 
+Links to main article: [#Clinical Genome Data Model provides Interactive Clinical Decision Support for Precision Medicine](https://www.nature.com/articles/s41598-020-58088-2)
 
 ## Contents
 
