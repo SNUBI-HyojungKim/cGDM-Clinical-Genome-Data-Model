@@ -5,9 +5,11 @@ The proposed cGDM could serve as a data-layer infrastructure supporting the inte
 
 To get more information, and to access the cGDM as logical data model, please check our publication.
 - Links to main article: 
+
 [Clinical Genome Data Model provides Interactive Clinical Decision Support for Precision Medicine](https://www.nature.com/articles/s41598-020-58088-2)
 
 - Citation information
+
 Kim, H.J., Kim, H.J., Park, Y. et al. Clinical Genome Data Model (cGDM) provides Interactive Clinical Decision Support for Precision Medicine. Sci Rep 10, 1414 (2020). https://doi.org/10.1038/s41598-020-58088-2
 
 ## Contents
