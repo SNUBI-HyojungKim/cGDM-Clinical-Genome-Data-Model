@@ -13,6 +13,9 @@ To get more information, and to access the cGDM as logical data model, please ch
 	Kim, H.J., Kim, H.J., Park, Y. et al. Clinical Genome Data Model (cGDM) provides Interactive Clinical Decision Support for
 	Precision Medicine. Sci Rep 10, 1414 (2020). https://doi.org/10.1038/s41598-020-58088-2
 
+## Graphical map of the contents outline
+![그림1](https://user-images.githubusercontent.com/58065456/71191769-6c10cd00-22ca-11ea-89d9-128b2b2fd259.png)
+
 ## Contents
 
 - Database Data Definition Language
@@ -46,9 +49,6 @@ We provide a PGX CDS algorithm deveploped on cGDM to illustrate how implementati
 
 ![image](https://user-images.githubusercontent.com/58065456/73509879-fbf67a80-4423-11ea-8877-32ab815ac1e7.png)
 [-link](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/IWPC_warfarin_dosing_implemented_on_the_cGDM)
-
-## Graphical map of the contents outline
-![그림1](https://user-images.githubusercontent.com/58065456/71191769-6c10cd00-22ca-11ea-89d9-128b2b2fd259.png)
 
 ## Authors
 
