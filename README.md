@@ -26,6 +26,8 @@ To get more information, and to access the cGDM as logical data model, please ch
 	- [TCGA Pancreatic Adenocarcinoma(PAAD)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
     - [1000 Genome Phase 3(CEU)](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
 
+- [IWPC algorithm implementation for logical validation](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/IWPC_warfarin_dosing_implemented_on_the_cGDM)
+
 - [Licence](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model#License)
 - Supplementary Figure
 	- [Figure S1. Entity-relationship diagram of the cGDM implemented in RDBMS](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/blob/master/Supplementary%20Figure%20S1.%20Entity-relationship%20diagram%20of%20the%20CGDM%20implemented%20in%20RDBMS.pdf)
@@ -39,10 +41,11 @@ The provided two demo databases were created based on the following two public d
 	- In 1KGP3, only the sample data corresponding to the population code "CEU" ("Utah Residents with Northern and Western European Ancestry") were used.
     - The volume of this data is so large that it cannot be shared with github but through our server. - see the [Demo_Database/1000 Genome Phase 3 dataset](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/Demo_Database)
 
-## [IWPC algorithm implementation for logical validation](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/IWPC_warfarin_dosing_implemented_on_the_cGDM)
+## IWPC algorithm implementation for logical validation
 We provide a PGX CDS algorithm deveploped on cGDM to illustrate how implementation of the CGDM provides interactive clinical decision support when it linked in clinical information system. For detail architectual understanding, please check original manuscript and supplementary figure S3 as well. As below, the result value-set of this function, coded in terms of SQL stored procedure, is shown. 
 
 ![image](https://user-images.githubusercontent.com/58065456/73509879-fbf67a80-4423-11ea-8877-32ab815ac1e7.png)
+[-link](https://github.com/SNUBI-HyojungKim/cGDM-Clinical-Genome-Data-Model/tree/master/IWPC_warfarin_dosing_implemented_on_the_cGDM)
 
 ## Graphical map of the contents outline
 ![그림1](https://user-images.githubusercontent.com/58065456/71191769-6c10cd00-22ca-11ea-89d9-128b2b2fd259.png)
